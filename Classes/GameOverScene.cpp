@@ -37,6 +37,13 @@ bool GameOverScene::init()
 	}
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	auto background = Sprite::create("images/fin_juego.png");
+	background->setPosition(Point((visibleSize.width / 2),
+		(visibleSize.height / 2)));
+	addChild(background, 0);
+
+
 	return true;
 }
 

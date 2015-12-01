@@ -3,7 +3,6 @@
 #include "Opciones.h"
 #include "Acerca.h"
 #include "Ayuda.h"
-
 USING_NS_CC;
 
 Scene* MenuPrincipal::createScene()
@@ -57,40 +56,37 @@ bool MenuPrincipal::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	//Cargamos el titulo del menu principal del juego
-	auto menuTitle = MenuItemImage::create("images/MainMenuScreen/Game_Title.png","images/MainMenuScreen/Game_Title.png");
+	auto menuTitle = MenuItemImage::create("images/MainMenuScreen/Game_Title.png", "images/MainMenuScreen/Game_Title.png");
 
 	//Cargamos el boton de jugar al menu principal
-	auto jugar = MenuItemImage::create("images/jugar.fw.png","images/MainMenuScreen/Play_Button(Click).png",
-											CC_CALLBACK_1(MenuPrincipal::ir_Pantalla_Game,this));
+	auto jugar = MenuItemImage::create("images/jugar.fw.png", "images/MainMenuScreen/Play_Button(Click).png",
+		CC_CALLBACK_1(MenuPrincipal::ir_Pantalla_Game, this));
 	//Cargamos el boton de opciones al menu principal
-	auto opciones = MenuItemImage::create("images/opciones.png","images/MainMenuScreen/Play_Button(Click).png",
+	auto opciones = MenuItemImage::create("images/opciones.png", "images/MainMenuScreen/Play_Button(Click).png",
 		CC_CALLBACK_1(MenuPrincipal::ir_Pantalla_Opciones, this));
-	
+
 	//Cargamos el boton de ayuda de al menu principal
-	auto ayuda = MenuItemImage::create("images/ayuda.png","images/MainMenuScreen/Play_Button(Click).png",
+	auto ayuda = MenuItemImage::create("images/ayuda.png", "images/MainMenuScreen/Play_Button(Click).png",
 		CC_CALLBACK_1(MenuPrincipal::ir_Pantalla_Ayuda, this));
 
 	//Cargamos el boton de acerca de al menu principal
-	auto acerca = MenuItemImage::create("images/acerca.png","images/MainMenuScreen/Play_Button(Click).png",
+	auto acerca = MenuItemImage::create("images/acerca.png", "images/MainMenuScreen/Play_Button(Click).png",
 		CC_CALLBACK_1(MenuPrincipal::ir_Pantalla_Acerca, this));
 
 	//Cargamos el boton de salir al menu principal
-	auto salir = MenuItemImage::create("images/salir.png","images/salir.png",
+	auto salir = MenuItemImage::create("images/salir.png", "images/salir.png",
 		CC_CALLBACK_1(MenuPrincipal::salir_Juego, this));
 
 	//Creamos el menu con los botones y el titulo del juego
-	auto menu = Menu::create(menuTitle, jugar, opciones,ayuda,acerca, salir, NULL);
-	menu->alignItemsVerticallyWithPadding(visibleSize.height /28);
+	auto menu = Menu::create(menuTitle, jugar, opciones, ayuda, acerca, salir, NULL);
+	menu->alignItemsVerticallyWithPadding(visibleSize.height / 28);
 	addChild(menu,1);
 
-	/*PRUEBAS DE CAMBIO DE IMAGEN DEL CURSOR Y LUCES EN EL JUEGO */
-	auto pp = Sprite::create("images/f1.jpg");
-	LoadCursorFromFileA("images/f3.jpg");
-
 	//Modificacion de la imagen de fondo de la escena, en la pantalla de menu
-	auto background = Sprite::create("images/f1.jpg");
-	background->setPosition(Point((visibleSize.width / 2),(visibleSize.height / 2)));
-	addChild(background,0);
+	auto background = Sprite::create("images/PantallaInicio.png");
+	background->setPosition(Point((visibleSize.width / 2), (visibleSize.height / 2)));
+	addChild(background, 0);
 	//Fin de la modificación del tutorial
+	
     return true;
 }
