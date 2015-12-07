@@ -8,11 +8,17 @@ class Puzzle : public cocos2d::Layer
 public:
 	static cocos2d::Scene* createScene();
 	bool _isMovingByMouse;
-	Vec2 _podVector;
-	/*asdfasdf*/
-	void onMouseMove(Event *event);
+	/*Variables globales pruebas*/
+	int _POS_INI_X=0;
+	int _POS_INI_Y = 0;
+
+	int _POS_FIN_X = 0;
+	int _POS_FIN_Y = 0;
+
+
+	void calcularDesplazamientoCursor();
+	void onMouseUp(Event *event);
 	void onMouseDown(Event *event);
-	/*asdfdsafas*/
 	virtual bool init();
 
 	// implement the "static create()" method manually

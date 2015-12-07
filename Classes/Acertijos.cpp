@@ -5,6 +5,7 @@
 #include <fstream>
 #include <stdio.h>
 #include "ui/CocosGUI.h"
+#include <time.h>
 
 using namespace std;
 
@@ -20,8 +21,9 @@ Scene* Acertijos::createScene()
 	return scene;
 }
 /*Genramos un numero aleatorio para obtener el acertijo a mostrar por pantalla */
-int generarNumeroAleatorio() {
-	return 1;
+int generarNumeroAleatorio(int fin) {
+
+	return  rand() % fin;
 }
 vector<string> leerFicheroAcertijos() {
 
@@ -101,8 +103,10 @@ bool Acertijos::init() {
 
 	//Creamos una etiqueta label con texto dentro
 	Label *eti;
-	texto = preguntas_acertijos.at(1);
-	respuesta_corrrecta = respuestas_acertijos.at(1);
+	srand(time(NULL));
+	int posicion_pregunta = generarNumeroAleatorio(preguntas_acertijos.size());
+	texto = preguntas_acertijos.at(posicion_pregunta);
+	respuesta_corrrecta = respuestas_acertijos.at(posicion_pregunta);
 
 
 	__String *text = __String::create(texto);

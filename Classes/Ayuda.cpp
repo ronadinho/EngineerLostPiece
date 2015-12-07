@@ -43,7 +43,7 @@ bool Ayuda::init()
 
 
 	//Modificacion de la imagen de fondo de la escena, en la pantalla de menu
-	auto background = Sprite::create("images/f3.jpg");
+	auto background = Sprite::create("images/PantallaMinijuegos.png");
 	background->setPosition(Point((visibleSize.width / 2), (visibleSize.height / 2)));
 	addChild(background, 0);
 	//Fin de la modificación del tutorial

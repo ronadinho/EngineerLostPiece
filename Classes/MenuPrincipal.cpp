@@ -56,7 +56,7 @@ bool MenuPrincipal::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	//Cargamos el titulo del menu principal del juego
-	auto menuTitle = MenuItemImage::create("images/MainMenuScreen/Game_Title.png", "images/MainMenuScreen/Game_Title.png");
+	auto menuTitle = MenuItemImage::create("images/titulo.fw.png","images/titulo.fw.png");
 
 	//Cargamos el boton de jugar al menu principal
 	auto jugar = MenuItemImage::create("images/jugar.fw.png", "images/MainMenuScreen/Play_Button(Click).png",

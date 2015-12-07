@@ -2,6 +2,7 @@
 #include "GameOverScene.h"
 #include "MenuPausa.h"
 #include "Puzzle.h"
+#include "ui/CocosGUI.h"
 
 using namespace std;
 
@@ -17,32 +18,23 @@ Scene* Puzzle::createScene()
 	return scene;
 }
 
-void Puzzle::onMouseMove(Event *event) {
-	static Vec2 *oldPosition;
-	auto *e = dynamic_cast<EventMouse *>(event);
-
-    if (oldPosition == NULL) {
-		oldPosition = new Vec2(e->getCursorX(), e->getCursorY());
-	} else {
-		_podVector = Vec2(e->getCursorX() - oldPosition->x,e->getCursorY() - oldPosition->y);
-		if (!_isMovingByMouse){
-			_isMovingByMouse = true;
-			oldPosition->x = e->getCursorX();
-			oldPosition->y = e->getCursorY();
-		}
-	}
-}
 void Puzzle::onMouseDown(Event *event) {
 
 	auto *e = dynamic_cast<EventMouse *>(event);
-	//e->getCursorX();
-
-	if (e->getCursorX()){}
-	else {
-
-	}
-
-	
+	_POS_INI_X= e->getCursorX();
+	_POS_INI_Y = e->getCursorY();
+}
+void Puzzle::onMouseUp(Event *event) {
+	auto *e = dynamic_cast<EventMouse *>(event);
+	_POS_FIN_X = e->getCursorX();
+	_POS_FIN_Y = e->getCursorY();
+	calcularDesplazamientoCursor();
+}
+void Puzzle::calcularDesplazamientoCursor() {
+	int mov_x = 0; 
+	mov_x= _POS_INI_X - _POS_FIN_X;
+	int mov_y = 0; 
+	mov_y = _POS_INI_Y - _POS_FIN_Y;
 
 }
 // on "init" you need to initialize your instance
@@ -108,18 +100,17 @@ bool Puzzle::init(){
 	addChild(pieza_4, 1);
 
 	Label *eti2;
-	__String *texto_piramide = __String::create("Obtén la piramide");
+	__String *texto_piramide = __String::create("Obten la piramide de la izquierda moviendo las piezas de bajo");
 	eti2 = Label::createWithTTF(texto_piramide->getCString(), "fonts/Marker Felt.ttf", 24);
-	eti2->setPosition(Vec2(visibleSize.width/2, visibleSize.height /2));
+	eti2->setPosition(Vec2(visibleSize.width/2, (visibleSize.height /2)-15));
 	eti2->setColor(ccc3(255, 0, 0));
 	addChild(eti2,3);
-
 
 	/************************************************************************/
 	auto mouseListener = EventListenerMouse::create();
 	mouseListener->onMouseDown = CC_CALLBACK_1(Puzzle::onMouseDown, this);
+	mouseListener->onMouseUp = CC_CALLBACK_1(Puzzle::onMouseUp, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
-
 	/**************************************************************************************************************/
 
 	return true;

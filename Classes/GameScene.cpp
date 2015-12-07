@@ -48,7 +48,7 @@ bool GameScene::init()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	/*cargamos el mapa del juego*/
-	map = TMXTiledMap::create("images/nivel.tmx");
+	map = TMXTiledMap::create("images/proves.tmx");
 	map->setPosition(Point(0, 0));
 	addChild(map,0); // with a tag of '99'
 	/*fin de la carga del mapa del juego*/
